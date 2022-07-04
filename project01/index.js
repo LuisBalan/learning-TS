@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var restaurants_1 = require("./restaurants");
+var hour = new Date().getHours();
 var dollarSigns = '$$';
 var deliveryTimeMax = 90;
 var maxDistance = 10;
@@ -14,6 +15,9 @@ var filteredRestaurants = restaurants_1["default"].filter(function (restaurant) 
         return false;
     }
     if (Number(restaurant.distance) > maxDistance) {
+        return false;
+    }
+    if (hour >= Number(restaurant.openHour) && hour <= Number(restaurant.closeHour)) {
         return false;
     }
     return restaurant;
