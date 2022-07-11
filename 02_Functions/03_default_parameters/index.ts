@@ -15,3 +15,4 @@ function proclaim(status = "not ready...", repeat = 1) {
 
   let myVar = getRandomNumber();
   console.log(myVar);
+  
