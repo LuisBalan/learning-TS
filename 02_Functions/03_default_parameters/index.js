@@ -8,3 +8,8 @@ function proclaim(status, repeat) {
 proclaim();
 proclaim('ready?');
 proclaim('ready!', 3);
+function getRandomNumber() {
+    return Math.random();
+}
+var myVar = getRandomNumber();
+console.log(myVar);
