@@ -54,6 +54,13 @@ class Vehicle {
     start() {
         console.log('Vehicle starting the roading!');
     };
+
+    printProperties() {
+        console.log(`
+            A vehicle of brand ${jetta.make}, model ${jetta.model},
+            released in ${jetta.year}.
+            The engine is of type ${ jetta.engine.fuelType} with a power of ${jetta.engine.horsepower}hp.`)
+    };
 };
 
 class Engine {
@@ -72,11 +79,4 @@ const jetta = new Vehicle('Volkswagen', 'Jetta', 2020, VWEngine);
 
 // methods print properties:
 
-function printProperties() {
-    console.log(`
-        A vehicle of brand ${jetta.make}, model ${jetta.model},
-        released in ${jetta.year}.
-        The engine is of type ${ jetta.engine.fuelType} with a power of ${jetta.engine.horsepower}hp.`)
-};
-
-printProperties();
+console.log(jetta.printProperties());

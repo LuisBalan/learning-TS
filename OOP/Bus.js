@@ -57,6 +57,10 @@ var Vehicle = /** @class */ (function () {
         console.log('Vehicle starting the roading!');
     };
     ;
+    Vehicle.prototype.printProperties = function () {
+        console.log("\n            A vehicle of brand ".concat(jetta.make, ", model ").concat(jetta.model, ",\n            released in ").concat(jetta.year, ".\n            The engine is of type ").concat(jetta.engine.fuelType, " with a power of ").concat(jetta.engine.horsepower, "hp."));
+    };
+    ;
     return Vehicle;
 }());
 ;
@@ -72,8 +76,4 @@ var Engine = /** @class */ (function () {
 var VWEngine = new Engine(400, 'diesel');
 var jetta = new Vehicle('Volkswagen', 'Jetta', 2020, VWEngine);
 // methods print properties:
-function printProperties() {
-    console.log("\n        A vehicle of brand ".concat(jetta.make, ", model ").concat(jetta.model, ",\n        released in ").concat(jetta.year, ".\n        The engine is of type ").concat(jetta.engine.fuelType, " with a power of ").concat(jetta.engine.horsepower, "hp."));
-}
-;
-printProperties();
+console.log(jetta.printProperties());
