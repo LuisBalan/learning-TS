@@ -78,6 +78,77 @@ class HighSchoolStudent extends GeneralStudent {
     };
 };
 
+class BankAccount {
+
+    private accountNumber: string;
+    protected balance: number;
+
+    constructor(accountNumber: string) {
+        this.accountNumber = accountNumber;
+        this.balance = 0;
+    };
+
+    deposit(amount: number) {
+        if ( amount > 0) {
+            this.balance += amount;
+            console.log(`Deposit: ${amount}\nNew Balance: ${this.balance}`)
+        } else {
+            console.log('Error: Invalid amount.')
+        };
+    };
+
+    withdraw(amount: number) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            console.log(`Withdrawn: ${amount}\nNew Balance: ${this.balance}`);
+        } else {
+            console.log('Error: Invalid amount.')
+        }
+    };
+};
+
+class Car {
+    protected make: string;
+    protected model: string;
+
+    constructor(make: string, model: string){
+        this.make = make;
+        this.model = model;
+    };
+
+    getCarInfo(): string {
+        return `Make: ${this.make}\nModel: ${this.model}`
+    };
+
+};
+
+class Porsche extends Car {};
+class Nissan extends Car {
+    getCarInfo(): string {
+        return `This Nissan car information:\nMake: ${this.make}\nModel: ${this.model}`
+    }
+};
+
+class Animal {
+    protected name: string;
+    private age: number;
+
+    constructor(name: string, age: number){
+        this.name = name;
+        this.age = age;
+    };
+
+    introduce(): string{
+        return `Hello I'm ${this.name} and I'm ${this.age} years old`
+    };
+};
+
+class Dog extends Animal{
+    introduce(): string {
+        return `Hello I'm the dog ${this.name}`
+    }
+};
+
 const blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -96,3 +167,14 @@ const luis = new HighSchoolStudent('luis', 123123, 6);
 // console.log(luis.name);
 console.log(luis.displayInfo());
 console.log(alejandra.displayInfo());
+console.log('---- Bank Account ----');
+const basicAccount = new BankAccount('102345');
+basicAccount.deposit(500);
+console.log('---- Cars ----');
+const CarreraGT = new Porsche('Porsche', 'Carrera GT');
+console.log(CarreraGT.getCarInfo());
+const versa = new Nissan('Nissan', 'Versa');
+console.log(versa.getCarInfo());
+console.log('---- Animal Class ----');
+const fido = new Dog('Fido', 3);
+console.log(fido.introduce());

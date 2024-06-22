@@ -104,6 +104,92 @@ var HighSchoolStudent = /** @class */ (function (_super) {
     return HighSchoolStudent;
 }(GeneralStudent));
 ;
+var BankAccount = /** @class */ (function () {
+    function BankAccount(accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0;
+    }
+    ;
+    BankAccount.prototype.deposit = function (amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            console.log("Deposit: ".concat(amount, "\nNew Balance: ").concat(this.balance));
+        }
+        else {
+            console.log('Error: Invalid amount.');
+        }
+        ;
+    };
+    ;
+    BankAccount.prototype.withdraw = function (amount) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            console.log("Withdrawn: ".concat(amount, "\nNew Balance: ").concat(this.balance));
+        }
+        else {
+            console.log('Error: Invalid amount.');
+        }
+    };
+    ;
+    return BankAccount;
+}());
+;
+var Car = /** @class */ (function () {
+    function Car(make, model) {
+        this.make = make;
+        this.model = model;
+    }
+    ;
+    Car.prototype.getCarInfo = function () {
+        return "Make: ".concat(this.make, "\nModel: ").concat(this.model);
+    };
+    ;
+    return Car;
+}());
+;
+var Porsche = /** @class */ (function (_super) {
+    __extends(Porsche, _super);
+    function Porsche() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Porsche;
+}(Car));
+;
+var Nissan = /** @class */ (function (_super) {
+    __extends(Nissan, _super);
+    function Nissan() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Nissan.prototype.getCarInfo = function () {
+        return "This Nissan car information:\nMake: ".concat(this.make, "\nModel: ").concat(this.model);
+    };
+    return Nissan;
+}(Car));
+;
+var Animal = /** @class */ (function () {
+    function Animal(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    ;
+    Animal.prototype.introduce = function () {
+        return "Hello I'm ".concat(this.name, " and I'm ").concat(this.age, " years old");
+    };
+    ;
+    return Animal;
+}());
+;
+var Dog = /** @class */ (function (_super) {
+    __extends(Dog, _super);
+    function Dog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Dog.prototype.introduce = function () {
+        return "Hello I'm the dog ".concat(this.name);
+    };
+    return Dog;
+}(Animal));
+;
 var blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -122,3 +208,14 @@ var luis = new HighSchoolStudent('luis', 123123, 6);
 // console.log(luis.name);
 console.log(luis.displayInfo());
 console.log(alejandra.displayInfo());
+console.log('---- Bank Account ----');
+var basicAccount = new BankAccount('102345');
+basicAccount.deposit(500);
+console.log('---- Cars ----');
+var CarreraGT = new Porsche('Porsche', 'Carrera GT');
+console.log(CarreraGT.getCarInfo());
+var versa = new Nissan('Nissan', 'Versa');
+console.log(versa.getCarInfo());
+console.log('---- Animal Class ----');
+var fido = new Dog('Fido', 3);
+console.log(fido.introduce());
