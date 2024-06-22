@@ -51,6 +51,33 @@ class Triangle extends GeometricShape {
     }
 };
 
+class GeneralStudent {
+    private name: string;
+    protected studentId: number;
+    
+    constructor(name: string, studentId: number){
+        this.name = name;
+        this.studentId = studentId;
+    };
+
+    displayInfo(): void {
+        console.log(`The student ${this.name} has ID ${this.studentId}`)
+    };
+};
+
+class HighSchoolStudent extends GeneralStudent {
+    degree: number;
+
+    constructor(name: string, studentId: number, degree: number){
+        super(name, studentId);
+        this.degree = degree;
+    };
+
+    displayInfo(): void {
+        console.log(`The high school student has ID ${this.studentId}`);
+    };
+};
+
 const blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -63,3 +90,9 @@ const greenTriangle = new Triangle('green triangle', [3, 4, 5]);
 console.log(greenTriangle.name);
 console.log(greenTriangle.getArea());
 console.log(greenTriangle.getPerimeter())
+console.log('----- Access Modifiers -----');
+const alejandra = new GeneralStudent('ale', 161815);
+const luis = new HighSchoolStudent('luis', 123123, 6);
+// console.log(luis.name);
+console.log(luis.displayInfo());
+console.log(alejandra.displayInfo());

@@ -76,6 +76,34 @@ var Triangle = /** @class */ (function (_super) {
     return Triangle;
 }(GeometricShape));
 ;
+var GeneralStudent = /** @class */ (function () {
+    function GeneralStudent(name, studentId) {
+        this.name = name;
+        this.studentId = studentId;
+    }
+    ;
+    GeneralStudent.prototype.displayInfo = function () {
+        console.log("The student ".concat(this.name, " has ID ").concat(this.studentId));
+    };
+    ;
+    return GeneralStudent;
+}());
+;
+var HighSchoolStudent = /** @class */ (function (_super) {
+    __extends(HighSchoolStudent, _super);
+    function HighSchoolStudent(name, studentId, degree) {
+        var _this = _super.call(this, name, studentId) || this;
+        _this.degree = degree;
+        return _this;
+    }
+    ;
+    HighSchoolStudent.prototype.displayInfo = function () {
+        console.log("The high school student has ID ".concat(this.studentId));
+    };
+    ;
+    return HighSchoolStudent;
+}(GeneralStudent));
+;
 var blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -88,3 +116,9 @@ var greenTriangle = new Triangle('green triangle', [3, 4, 5]);
 console.log(greenTriangle.name);
 console.log(greenTriangle.getArea());
 console.log(greenTriangle.getPerimeter());
+console.log('----- Access Modifiers -----');
+var alejandra = new GeneralStudent('ale', 161815);
+var luis = new HighSchoolStudent('luis', 123123, 6);
+// console.log(luis.name);
+console.log(luis.displayInfo());
+console.log(alejandra.displayInfo());
