@@ -301,28 +301,29 @@ var Utility = /** @class */ (function () {
     Utility.generateRandomString = function (length, language) {
         var englishAlphabet = 'abcdefghijklmnopqrstuvwxyz';
         var spanishAlphabet = 'abcdefghijklmnñopqrstuvwxyz';
-        var upperLimit = language === 'en' ? 25 : 26;
+        // const upperLimit = language === 'en' ? 25 : 26;
         var output = '';
         if (language === 'es') {
             for (var i = 0; i < length; i++) {
-                var randomIndex = Math.floor(Math.random() * upperLimit);
+                var randomIndex = Math.floor(Math.random() * englishAlphabet.length);
                 output = output + englishAlphabet[randomIndex];
             }
             ;
         }
         else {
             for (var i = 0; i < length; i++) {
-                var randomIndex = Math.floor(Math.random() * upperLimit);
+                var randomIndex = Math.floor(Math.random() * spanishAlphabet.length);
                 output = output + spanishAlphabet[randomIndex];
             }
             ;
         }
         ;
+        console.log('----', output);
         return output;
     };
     ;
     Utility.capitalizeString = function (cadena) {
-        return cadena.split('').map(function (char) { return char.toUpperCase(); }).join('');
+        return cadena.charAt(0).toUpperCase() + cadena.slice(1);
     };
     ;
     return Utility;

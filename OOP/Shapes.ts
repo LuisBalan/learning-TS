@@ -260,26 +260,27 @@ class Operations {
     static generateRandomString(length: number, language: 'en' | 'es'): string {
         const englishAlphabet  = 'abcdefghijklmnopqrstuvwxyz';
         const spanishAlphabet = 'abcdefghijklmnñopqrstuvwxyz';
-        const upperLimit = language === 'en' ? 25 : 26;
+        // const upperLimit = language === 'en' ? 25 : 26;
         
         let output: string = '';
             
             if (language === 'es') {
                 for (let i = 0; i < length; i++){
-                    const randomIndex: number = Math.floor( Math.random() * upperLimit);
+                    const randomIndex: number = Math.floor( Math.random() * englishAlphabet.length);
                     output = output + englishAlphabet[randomIndex];
                 };
             } else {
                 for (let i = 0; i < length; i++){
-                    const randomIndex: number = Math.floor( Math.random() * upperLimit);
+                    const randomIndex: number = Math.floor( Math.random() * spanishAlphabet.length);
                     output = output + spanishAlphabet[randomIndex];
                 };
             };
+            console.log('----', output)
             return  output;
         };
 
     static capitalizeString(cadena: string): string {
-        return cadena.split('').map((char) => char.toUpperCase()).join('');
+        return cadena.charAt(0).toUpperCase() + cadena.slice(1);
     };
  };
 
