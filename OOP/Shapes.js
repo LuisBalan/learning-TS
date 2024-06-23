@@ -190,6 +190,55 @@ var Dog = /** @class */ (function (_super) {
     return Dog;
 }(Animal));
 ;
+var Counter = /** @class */ (function () {
+    function Counter() {
+        Counter.count = 0;
+    }
+    ;
+    Counter.increment = function () {
+        Counter.count++;
+        console.log('counter increased in 1');
+    };
+    ;
+    Counter.getCount = function () {
+        return Counter.count;
+    };
+    ;
+    return Counter;
+}());
+;
+var Operations = /** @class */ (function () {
+    function Operations() {
+    }
+    Operations.add = function (var1, var2) {
+        return var1 + var2;
+    };
+    ;
+    Operations.substract = function (var1, var2) {
+        return var1 - var2;
+    };
+    ;
+    Operations.multiply = function (var1, var2) {
+        return var1 * var2;
+    };
+    ;
+    Operations.divide = function (var1, var2) {
+        return var1 / var2;
+    };
+    ;
+    return Operations;
+}());
+;
+var Singleton = /** @class */ (function () {
+    function Singleton() {
+    }
+    Singleton.getInstance = function () {
+        return Singleton.Singleton;
+    };
+    ;
+    return Singleton;
+}());
+;
 var blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -219,3 +268,24 @@ console.log(versa.getCarInfo());
 console.log('---- Animal Class ----');
 var fido = new Dog('Fido', 3);
 console.log(fido.introduce());
+console.log('----- Counter -----');
+var FirstCounter = new Counter();
+console.log(Counter.getCount());
+console.log(Counter.increment());
+console.log(Counter.getCount());
+console.log(Counter.increment());
+console.log(Counter.getCount());
+console.log(Counter.increment());
+console.log(Counter.getCount());
+console.log(Counter.increment());
+console.log(Counter.getCount());
+console.log('--- Operations ---');
+console.log(Operations.add(1, 2));
+console.log(Operations.substract(10, 5));
+console.log(Operations.multiply(40, 50));
+console.log(Operations.divide(120, 9));
+console.log('---- Singleton ----');
+var singleton1 = new Singleton;
+var singleton2 = new Singleton;
+var sigleton3 = new Singleton;
+console.log(Singleton.getInstance());

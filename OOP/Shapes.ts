@@ -149,6 +149,51 @@ class Dog extends Animal{
     }
 };
 
+class Counter {
+     private static count: number;
+
+     constructor(){
+        Counter.count = 0;
+     };
+
+     static increment() {
+        Counter.count++;
+        console.log('counter increased in 1')
+     };
+
+     static getCount() {
+        return Counter.count;
+     };
+};
+
+class Operations {
+    static add(var1: number, var2: number): number {
+        return var1 + var2;
+    };
+
+    static substract(var1: number, var2: number): number {
+        return var1 - var2;
+    };
+
+    static multiply(var1: number, var2: number): number {
+        return var1 * var2;
+    };
+
+    static divide(var1: number, var2: number): number {
+        return var1 / var2;
+    };
+};
+
+ class Singleton {
+
+    private static Singleton;
+
+    static getInstance(): Singleton {
+        return Singleton.Singleton
+    };
+
+ };
+
 const blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -178,3 +223,25 @@ console.log(versa.getCarInfo());
 console.log('---- Animal Class ----');
 const fido = new Dog('Fido', 3);
 console.log(fido.introduce());
+console.log('----- Counter -----');
+const FirstCounter = new Counter();
+console.log(Counter.getCount())
+console.log(Counter.increment())
+console.log(Counter.getCount())
+console.log(Counter.increment())
+console.log(Counter.getCount())
+console.log(Counter.increment())
+console.log(Counter.getCount())
+console.log(Counter.increment())
+console.log(Counter.getCount())
+
+console.log('--- Operations ---');
+console.log(Operations.add(1, 2));
+console.log(Operations.substract(10, 5));
+console.log(Operations.multiply(40, 50));
+console.log(Operations.divide(120, 9));
+console.log('---- Singleton ----');
+const singleton1 = new Singleton;
+const singleton2 = new Singleton;
+const sigleton3 = new Singleton;
+console.log(Singleton.getInstance());
