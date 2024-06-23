@@ -239,6 +239,95 @@ var Singleton = /** @class */ (function () {
     return Singleton;
 }());
 ;
+var Utility = /** @class */ (function () {
+    function Utility() {
+    }
+    Utility.formatDate = function (date, format) {
+        // date: MM-DD-YYYY
+        /**
+         * MM-DD-YY
+         * DD-MM-YY
+         * YY-MM-DD
+         * Month D, Yr
+         * M-D-YY
+         */
+        var dateElements = date.split('-');
+        var month = dateElements[0];
+        var day = dateElements[1];
+        var year = dateElements[2];
+        var formattedDate = '';
+        // format.toString();
+        // const formattedDay = day.toString();
+        var monthEquivalances = {
+            '01': 'January',
+            '02': 'February',
+            '03': 'March',
+            '04': 'April',
+            '05': 'May',
+            '06': 'June',
+            '07': 'July',
+            '08': 'August',
+            '09': 'September',
+            '10': 'October',
+            '11': 'November',
+            '12': 'December'
+        };
+        var abbreviationsMonths = {
+            '01': 'Jan',
+            '02': 'Feb',
+            '03': 'Mar',
+            '04': 'Apr',
+            '05': 'May',
+            '06': 'Jun',
+            '07': 'Jul',
+            '08': 'Aug',
+            '09': 'Sep',
+            '10': 'Oct',
+            '11': 'Nov',
+            '12': 'Dec'
+        };
+        switch (format) {
+            case 1:
+                formattedDate = "".concat(day, "-").concat(month, "-").concat(year);
+                break;
+            case 2:
+                formattedDate = "4".concat(monthEquivalances[month], ", ").concat(day, " ").concat(year);
+                break;
+        }
+        ;
+        return formattedDate;
+    };
+    ;
+    Utility.generateRandomString = function (length, language) {
+        var englishAlphabet = 'abcdefghijklmnopqrstuvwxyz';
+        var spanishAlphabet = 'abcdefghijklmnñopqrstuvwxyz';
+        var upperLimit = language === 'en' ? 25 : 26;
+        var output = '';
+        if (language === 'es') {
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * upperLimit);
+                output = output + englishAlphabet[randomIndex];
+            }
+            ;
+        }
+        else {
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * upperLimit);
+                output = output + spanishAlphabet[randomIndex];
+            }
+            ;
+        }
+        ;
+        return output;
+    };
+    ;
+    Utility.capitalizeString = function (cadena) {
+        return cadena.split('').map(function (char) { return char.toUpperCase(); }).join('');
+    };
+    ;
+    return Utility;
+}());
+;
 var blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -289,3 +378,10 @@ var singleton1 = new Singleton;
 var singleton2 = new Singleton;
 var sigleton3 = new Singleton;
 console.log(Singleton.getInstance());
+console.log(Utility.formatDate('11-12-1990', 1));
+console.log('--- Random String Generator ---');
+console.log(Utility.generateRandomString(45, 'es'));
+console.log('--- Capitalize ---');
+console.log(Utility.capitalizeString('cadena'));
+console.log(Utility.capitalizeString('the quick fox'));
+console.log(Utility.capitalizeString('ABCDEFG'));

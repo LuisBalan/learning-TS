@@ -194,6 +194,95 @@ class Operations {
 
  };
 
+ class Utility {
+    static formatDate(date: string, format: number ): string {
+        // date: MM-DD-YYYY
+
+        /**
+         * MM-DD-YY
+         * DD-MM-YY
+         * YY-MM-DD
+         * Month D, Yr
+         * M-D-YY
+         */
+
+
+        const dateElements = date.split('-');
+        const month = dateElements[0];
+        const day = dateElements[1];
+        const year = dateElements[2];
+        let formattedDate = '';
+        // format.toString();
+
+        // const formattedDay = day.toString();
+        const monthEquivalances = {
+            '01': 'January',
+            '02': 'February',
+            '03': 'March',
+            '04': 'April',
+            '05': 'May',
+            '06': 'June',
+            '07': 'July',
+            '08': 'August',
+            '09': 'September',
+            '10': 'October',
+            '11': 'November',
+            '12': 'December'
+        };
+
+        const abbreviationsMonths = {
+            '01': 'Jan',
+            '02': 'Feb',
+            '03': 'Mar',
+            '04': 'Apr',
+            '05': 'May',
+            '06': 'Jun',
+            '07': 'Jul',
+            '08': 'Aug',
+            '09': 'Sep',
+            '10': 'Oct',
+            '11': 'Nov',
+            '12': 'Dec'
+        };
+
+        switch (format) {
+            case 1:
+                formattedDate = `${day}-${month}-${year}`
+                break;
+            case 2:
+                formattedDate = `4${monthEquivalances[month]}, ${day} ${year}`
+                break;
+        };
+        
+        return formattedDate;
+    };
+
+    static generateRandomString(length: number, language: 'en' | 'es'): string {
+        const englishAlphabet  = 'abcdefghijklmnopqrstuvwxyz';
+        const spanishAlphabet = 'abcdefghijklmnñopqrstuvwxyz';
+        const upperLimit = language === 'en' ? 25 : 26;
+        
+        let output: string = '';
+            
+            if (language === 'es') {
+                for (let i = 0; i < length; i++){
+                    const randomIndex: number = Math.floor( Math.random() * upperLimit);
+                    output = output + englishAlphabet[randomIndex];
+                };
+            } else {
+                for (let i = 0; i < length; i++){
+                    const randomIndex: number = Math.floor( Math.random() * upperLimit);
+                    output = output + spanishAlphabet[randomIndex];
+                };
+            };
+            return  output;
+        };
+
+    static capitalizeString(cadena: string): string {
+        return cadena.split('').map((char) => char.toUpperCase()).join('');
+    };
+ };
+
 const blueCircle = new NewCircle('blue circle', [1]);
 console.log(blueCircle.getArea());
 console.log(blueCircle.getPerimeter());
@@ -245,3 +334,10 @@ const singleton1 = new Singleton;
 const singleton2 = new Singleton;
 const sigleton3 = new Singleton;
 console.log(Singleton.getInstance());
+console.log(Utility.formatDate('11-12-1990', 1))
+console.log('--- Random String Generator ---');
+console.log(Utility.generateRandomString(45, 'es'));
+console.log('--- Capitalize ---');
+console.log(Utility.capitalizeString('cadena'));
+console.log(Utility.capitalizeString('the quick fox'));
+console.log(Utility.capitalizeString('ABCDEFG'));
