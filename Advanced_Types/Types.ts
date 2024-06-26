@@ -47,3 +47,56 @@ const bus: Bus = {make: 'Volvo', model: 'XC60', payloadCapacity: 30};
 const march: Vehicle = {make: 'Nissan', model: 'March2020', payloadCapacity: 5};
 console.log(bus);
 console.log(march);
+
+console.log('--- Exercise 4---\n--- Type Guards ---');
+
+// function printType(arg: number | boolean): void {
+//     const typeOfArg: string = typeof arg;
+
+//     switch(typeOfArg) {
+//         case 'number':
+//             console.log(`Type of ${arg}: number`);
+//             break;
+
+//         case 'boolean':
+//             console.log(`Type of ${arg}: boolean`);
+//             break;
+
+//         default:
+//             console.log('Neither number or boolean');
+//     };
+// };
+
+function printType(arg: number | boolean): string {
+    return typeof arg;
+};
+
+console.log(printType(8));
+console.log(printType(false));
+console.log(printType(true));
+
+// Exercise 5
+function isOdd(arg: number ): boolean {
+    let isOddNotification!: boolean;
+    if ((typeof arg === 'number' && arg%2 === 0) || typeof arg !== 'number') {
+        // isOddNotification =  false;
+        // return isOddNotification
+        isOddNotification = false;
+    } else if (typeof arg === 'number' && arg%2 !== 0) {
+        // isOddNotification = true;
+        // return isOddNotification
+        isOddNotification = true;
+    };
+
+    return isOddNotification;
+};
+
+console.log(isOdd(4));
+console.log(isOdd(123411));
+console.log('ocho: ', isFinite(8))
+console.log('infinity: ', isFinite(+Infinity));
+console.log('-infinity: ', isFinite(-Infinity))
+console.log('Nan: ', isFinite(NaN))
+
+// Exercise 6
+
