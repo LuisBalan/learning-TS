@@ -114,3 +114,32 @@ var testString = 'abcdefghijklmn';
 var stringsArryTest = ['abc', 'def', 'ghi', 'jkl', 'mno'];
 console.log('string length: ', getLength(testString));
 console.log('strings array length: ', getLength(stringsArryTest));
+// Exercise 9
+function returnAValue(arg) {
+    return arg;
+}
+;
+console.log('--- Generics ---');
+console.log(returnAValue('test string'));
+console.log(returnAValue(['one', 'two', 'three']));
+console.log(returnAValue(12345));
+console.log(returnAValue(false && false));
+console.log(returnAValue({ 1: 'one', 2: 'two' }));
+// Exercise 10
+function swapArray(arg, firstIndex, secondIndex) {
+    if ((firstIndex >= 0 && firstIndex < arg.length) && (secondIndex >= 0 && secondIndex < arg.length)) {
+        var firstItem = arg[firstIndex];
+        var secondItem = arg[secondIndex];
+        arg.splice(firstIndex, 1, secondItem);
+        arg.splice(secondIndex, 1, firstItem);
+        return arg;
+    }
+    else {
+        throw new Error('Invalid indices');
+    }
+}
+;
+console.log('--- Swap Array ---');
+console.log(swapArray([1, 2, 3, 4, 5, 8, 7], 6, 2));
+// console.log(swapArray([1, 2, 3, 4, 5], 1, 3));
+console.log(swapArray(["one", "two", "three", "four", "five", "six"], 1000, 2000));
