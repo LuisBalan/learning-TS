@@ -86,3 +86,31 @@ console.log('ocho: ', isFinite(8));
 console.log('infinity: ', isFinite(+Infinity));
 console.log('-infinity: ', isFinite(-Infinity));
 console.log('Nan: ', isFinite(NaN));
+// Exercise 6
+var mixedArray = [1, 2, 3, 'one', 'two', 'three', true, false];
+var numberArray = mixedArray.filter(function (item) { return typeof item === 'number'; });
+var stringArray = mixedArray.filter(function (item) { return typeof item === 'string'; });
+var booleanArray = mixedArray.filter(function (item) { return typeof item === 'boolean'; });
+console.log('--- Type Assertions ---');
+console.log('number array: ', numberArray);
+console.log('string array: ', stringArray);
+console.log('boolean array: ', booleanArray);
+// Exercise 7
+var stringVar = 'I am a string';
+var castedVar = stringVar;
+console.log(typeof stringVar);
+console.log(typeof castedVar);
+// Exercise 8
+function getLength(arg) {
+    if (typeof arg === 'string') {
+        return arg.length;
+    }
+    else {
+        return arg.map(function (item) { return item.length; }).reduce(function (accum, current) { return accum + current; }, 0);
+    }
+}
+;
+var testString = 'abcdefghijklmn';
+var stringsArryTest = ['abc', 'def', 'ghi', 'jkl', 'mno'];
+console.log('string length: ', getLength(testString));
+console.log('strings array length: ', getLength(stringsArryTest));

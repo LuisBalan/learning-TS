@@ -100,3 +100,34 @@ console.log('Nan: ', isFinite(NaN))
 
 // Exercise 6
 
+const mixedArray: (string | number | boolean)[]  = [1, 2, 3, 'one', 'two', 'three', true, false];
+
+const numberArray: number[] = mixedArray.filter((item): item is number => typeof item === 'number');
+const stringArray: string[] = mixedArray.filter((item): item is string => typeof item === 'string');
+const booleanArray: boolean[] = mixedArray.filter((item): item is boolean => typeof item === 'boolean');
+console.log('--- Type Assertions ---');
+console.log('number array: ', numberArray);
+console.log('string array: ', stringArray);
+console.log('boolean array: ', booleanArray);
+
+// Exercise 7
+
+const stringVar: any = 'I am a string';
+const castedVar: string = stringVar as string;
+console.log(typeof stringVar);
+console.log(typeof castedVar);
+
+// Exercise 8
+
+function getLength( arg: (string | string[])): number {
+    if (typeof arg === 'string'){
+        return (arg as string).length;
+    } else {
+        return (arg as string[]).map(item => item.length).reduce((accum, current) => accum + current , 0);
+    }
+};
+
+const testString: string = 'abcdefghijklmn';
+const stringsArryTest: string[] = ['abc', 'def', 'ghi', 'jkl', 'mno'];
+console.log('string length: ', getLength(testString));
+console.log('strings array length: ', getLength(stringsArryTest));
