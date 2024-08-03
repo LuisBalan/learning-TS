@@ -164,3 +164,33 @@ console.log('--- Swap Array ---');
 console.log(swapArray([1, 2, 3, 4, 5, 8, 7], 6, 2));
 // console.log(swapArray([1, 2, 3, 4, 5], 1, 3));
 console.log(swapArray(["one", "two", "three", "four", "five", "six"], 1000, 2000));
+
+type Properties = 'propA' | 'propB';
+type MyMappedType = {
+    [P in Properties]: boolean;
+};
+
+
+type Transaction = {
+    date: string,
+    description: string,
+    ammount: number,
+    typeOfTransaction: string,
+};
+
+type Optional<T> = {
+    [K in keyof T]?: T[K]
+};
+
+// const withdraw: Transaction = {
+//     date: '11-02-2024',
+//     description: 'For car sale',
+//     ammount: 3000,
+//     typeOfTransaction: 'withdraw'
+// };
+
+// type OptionalTransaction = Optional;
+
+// const optionalWithdraw: OptionalTransaction = {
+
+// }
